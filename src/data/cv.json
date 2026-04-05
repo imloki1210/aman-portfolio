@@ -1,0 +1,63 @@
+{
+  "personal": {
+    "name": "Aman Singh",
+    "title": "Software Developer",
+    "email": "iamansingh1210@gmail.com",
+    "phone": "+91 6353230442",
+    "location": "Surat, Gujarat",
+    "linkedin": "linkedin.com/in/iamansingh1210"
+  },
+  "experience": [
+    {
+      "id": "exp-1",
+      "title": "Software Developer",
+      "company": "LogWinTech Pvt. Ltd.",
+      "startDate": "09/2025",
+      "endDate": "Present",
+      "location": "Surat",
+      "project": "Conservice – Single Family Activation",
+      "bullets": [
+        "Worked as a Frontend Developer on the Cinservice Single Family Activation platform, responsible for building and enhancing multiple core modules using Next.js.",
+        "Contributed to the development and maintenance of key features including Locations, Cases & Tasks, Company Management, and other operational modules. Implemented several performance optimizations, especially for listing views, improving load time, rendering efficiency, and overall user experience.",
+        "Collaborated closely with backend and product teams to integrate APIs, handle complex data flows, and deliver scalable, user-friendly interfaces. Also involved in fixing production issues, improving UI consistency, and adding new functionalities based on business requirements.",
+        "Implemented reusable components and common UI patterns, improving code maintainability and reducing duplication across modules.",
+        "Actively participated in feature enhancements, bug fixing, and code reviews, ensuring stable releases and better overall application quality."
+      ]
+    },
+    {
+      "id": "exp-2",
+      "title": "Associate React.js Developer",
+      "company": "Instance IT Solutions",
+      "startDate": "11/2023",
+      "endDate": "08/2025",
+      "location": "Surat",
+      "project": "Bizcompass – Business Process Automation Platform",
+      "bullets": [
+        "Worked as part of the frontend team on multiple core modules, including Project Management, Recruitment, Payroll, CRM, People and Support.",
+        "Took key responsibility in developing and maintaining features for the Project Management, Support Ticket, and Reports modules.",
+        "Worked extensively on Task management features in Project Management enhancing features like task timer tracking and status updates, while also designing and developing several new features to improve workflows.",
+        "Restructured the entire Reports module to improve flexibility and reusability also developed numerous complex reports from scratch, focusing on dynamic data visualization and user friendly interfaces.",
+        "Built and optimized reusable React components to maintain a consistent UI and accelerate development across the platform."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Bachelor of Technology - BTech, Computer Science",
+      "institution": "Bhagwan Mahavir University",
+      "startYear": "2020",
+      "endYear": "2024",
+      "location": "Surat"
+    }
+  ],
+  "skills": {
+    "languages": ["JavaScript (ES6+)", "TypeScript", "HTML5", "CSS3"],
+    "librariesFrameworks": ["React.js", "Next.js", "Redux Toolkit", "Zustand", "Context API", "Tailwind CSS", "Bootstrap", "Socket.io"],
+    "technologiesTools": ["Firebase (Firestore, Authentication)", "REST APIs", "Git", "GitHub"]
+  },
+  "languages": [
+    { "name": "English", "proficiency": 3, "max": 5 },
+    { "name": "Gujarati", "proficiency": 2, "max": 5 },
+    { "name": "Hindi", "proficiency": 4, "max": 5 }
+  ]
+}
