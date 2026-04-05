@@ -5,6 +5,7 @@ import HeroSection from "../components/HeroSection";
 import AnimatedDivider from "../components/AnimatedDivider";
 import ExperienceSection from "../components/ExperienceSection";
 import SkillsSection from "../components/SkillsSection";
+import FeaturedProjects from "../components/FeaturedProjects";
 import ContactSection from "../components/ContactSection";
 
 export default function Home() {
@@ -23,6 +24,8 @@ export default function Home() {
       <HeroSection />
       <AnimatedDivider />
       <ExperienceSection />
+      <AnimatedDivider />
+      <FeaturedProjects />
       <AnimatedDivider />
       <SkillsSection />
       <AnimatedDivider />

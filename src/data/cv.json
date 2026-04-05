@@ -41,23 +41,9 @@
       ]
     }
   ],
-  "education": [
-    {
-      "degree": "Bachelor of Technology - BTech, Computer Science",
-      "institution": "Bhagwan Mahavir University",
-      "startYear": "2020",
-      "endYear": "2024",
-      "location": "Surat"
-    }
-  ],
   "skills": {
     "languages": ["JavaScript (ES6+)", "TypeScript", "HTML5", "CSS3"],
     "librariesFrameworks": ["React.js", "Next.js", "Redux Toolkit", "Zustand", "Context API", "Tailwind CSS", "Bootstrap", "Socket.io"],
     "technologiesTools": ["Firebase (Firestore, Authentication)", "REST APIs", "Git", "GitHub"]
-  },
-  "languages": [
-    { "name": "English", "proficiency": 3, "max": 5 },
-    { "name": "Gujarati", "proficiency": 2, "max": 5 },
-    { "name": "Hindi", "proficiency": 4, "max": 5 }
-  ]
+  }
 }

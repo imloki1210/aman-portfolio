@@ -1,0 +1,56 @@
+[
+  {
+    "id": "realtime-analytics",
+    "slug": "realtime-analytics",
+    "title": "Realtime Analytics",
+    "summary": "High-throughput data streaming and visualization dashboard.",
+    "description_challenge": "The critical challenge was engineering an analytics pipeline capable of capturing, processing, and rendering high-throughput data streams in real-time, operating with extremely tight latency margins under heavy load. Developing a highly optimized UI that avoided unnecessary react re-renders was paramount.",
+    "execution_features": [
+      "Engineered robust websocket state pipelines with zero-lag connections",
+      "Created highly optimized chart and graph components managing huge dataset chunks",
+      "Designed an intuitive centralized dashboard prioritizing rapid cognitive absorption"
+    ],
+    "advanced_metrics": "Sustained sub-50ms ingestion-to-render latency across a continuous flow of over 10k datapoints/second while keeping main thread unblocked.",
+    "tech_stack": [
+      "Next.js",
+      "WebSockets",
+      "Zustand"
+    ]
+  },
+  {
+    "id": "resume-intelligence",
+    "slug": "resume-intelligence",
+    "title": "Resume Intelligence",
+    "summary": "AI-powered contextual resume parsing and evaluation engine.",
+    "description_challenge": "Traditional ATS scanners fail to capture semantic meaning and nuances. The objective was to build an intelligent, context-aware engine that could evaluate candidate resumes against complex job requisitions beyond generic keyword mapping, bridging the gap between raw data and qualitative analysis.",
+    "execution_features": [
+      "Developed a robust backend for secure data ingestion and API facilitation",
+      "Integrated Advanced LLM pipelines for accurate contextual and semantic matching",
+      "Implemented highly efficient vector embedding storage for hyper-fast semantic querying"
+    ],
+    "advanced_metrics": "Increased recruiter shortlisting efficiency by 40% while maintaining a 95% relevance match rate via rigorous vector tuning.",
+    "tech_stack": [
+      "Python",
+      "FastAPI",
+      "PostgreSQL"
+    ]
+  },
+  {
+    "id": "debugging-assistant",
+    "slug": "debugging-assistant",
+    "title": "Debugging Assistant",
+    "summary": "Automated code diagnosis and AST-based problem resolution tool.",
+    "description_challenge": "Developers spend exorbitant time context-switching between tools to diagnose syntactical or logical bugs. The system required a seamless deep-parsing architecture to understand Abstract Syntax Trees, detect anomalies, and suggest safe context-aware code patches on the fly.",
+    "execution_features": [
+      "Implemented real-time code analysis utilizing powerful AST parsing logic",
+      "Designed a sleek and minimal IDE-like interface for intuitive error reading",
+      "Integrated machine learning heuristics for targeted hot-fix code suggestions"
+    ],
+    "advanced_metrics": "Reduced typical debugging cycles by 25% by identifying off-by-one errors and logical dead-ends before direct execution testing.",
+    "tech_stack": [
+      "React",
+      "TypeScript",
+      "Python (FastAPI)"
+    ]
+  }
+]

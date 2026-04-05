@@ -4,10 +4,10 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const titles = [
-  "Software Developer",
-  "Frontend Engineer",
-  "React.js Specialist",
-  "Next.js Developer",
+  "Full Stack Developer",
+  "React.js / Next.js Specialist",
+  "JavaScript / TypeScript",
+  "Python FastAPI Engineer",
 ];
 
 function AnimatedTitle() {
@@ -20,9 +20,9 @@ function AnimatedTitle() {
     let timeout: ReturnType<typeof setTimeout>;
 
     if (!deleting && displayed.length < current.length) {
-      timeout = setTimeout(() => setDisplayed(current.slice(0, displayed.length + 1)), 55);
+      timeout = setTimeout(() => setDisplayed(current.slice(0, displayed.length + 1)), 60);
     } else if (!deleting && displayed.length === current.length) {
-      timeout = setTimeout(() => setDeleting(true), 2200);
+      timeout = setTimeout(() => setDeleting(true), 2500);
     } else if (deleting && displayed.length > 0) {
       timeout = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 30);
     } else if (deleting && displayed.length === 0) {
@@ -34,9 +34,9 @@ function AnimatedTitle() {
   }, [displayed, deleting, index]);
 
   return (
-    <span className="text-violet-300 font-semibold">
+    <span className="font-mono text-violet-300 font-semibold inline-flex items-center tracking-tight">
       {displayed}
-      <span className="inline-block w-0.5 h-[1.1em] ml-0.5 bg-violet-400 align-middle animate-pulse" />
+      <span className="inline-block w-[0.4em] h-[1.1em] ml-[2px] bg-violet-400 animate-pulse opacity-80" />
     </span>
   );
 }
@@ -54,24 +54,27 @@ export default function HeroSection() {
       </div>
 
       <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: false, amount: 0.2 }}
+        transition={{ duration: 0.9, type: "spring", stiffness: 45 }}
         className="relative max-w-4xl mx-auto flex flex-col items-center gap-6"
       >
-        {/* Eyebrow badge */}
+        {/* Terminal Pill */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: false }}
           transition={{ delay: 0.2 }}
-          className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-500/10 border border-violet-400/20 text-violet-300 text-sm"
+          className="font-mono flex items-center gap-2 px-4 py-2 rounded-md bg-black/40 border border-white/10 text-white/80 text-sm shadow-xl"
         >
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-          Available for opportunities
+          <span className="text-violet-400 font-bold">&gt;</span>
+          <span>Software Developer | Next.js | Python FastAPI</span>
+          <span className="w-1.5 h-4 bg-white/70 animate-pulse ml-1" />
         </motion.div>
 
         {/* Name */}
-        <h1 className="text-6xl sm:text-7xl md:text-8xl font-bold tracking-tight leading-none">
+        <h1 className="text-6xl sm:text-7xl md:text-8xl font-bold tracking-tight leading-none mt-4">
           <span
             style={{
               backgroundImage: "linear-gradient(135deg, #fff 0%, #fff 50%, rgba(255,255,255,0.7) 100%)",
@@ -85,16 +88,10 @@ export default function HeroSection() {
           </span>
         </h1>
 
-        {/* Animated designation */}
-        <p className="text-xl sm:text-2xl font-medium text-white/60 h-8">
+        {/* Subtitle with High Contrast Dev Typing Effect */}
+        <div className="text-xl sm:text-2xl mt-2 tracking-wide min-h-[36px]">
           <AnimatedTitle />
-        </p>
-
-        {/* Tagline */}
-        <p className="max-w-xl text-base sm:text-lg text-white/85 leading-relaxed">
-          Building fast, scalable, and delightful frontend experiences
-          with React &amp; Next.js — one component at a time.
-        </p>
+        </div>
 
         {/* CTA */}
         <motion.a
@@ -105,7 +102,7 @@ export default function HeroSection() {
           }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.97 }}
-          className="mt-2 relative inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-semibold text-sm text-white overflow-hidden group"
+          className="mt-8 relative inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-semibold text-sm text-white overflow-hidden group"
         >
           {/* Button bg */}
           <span className="absolute inset-0 rounded-full bg-gradient-to-r from-violet-600 to-violet-500 opacity-90 group-hover:opacity-100 transition-opacity" />

@@ -4,19 +4,19 @@ import { useState, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import cv from "@/data/cv.json";
 
-const sectionVariants = {
-  hidden: { opacity: 0, y: 50 },
+const sectionVariants: any = {
+  hidden: { opacity: 0, y: 50, scale: 0.95 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
+    scale: 1,
+    transition: { duration: 0.7, type: "spring", stiffness: 45 },
   },
 };
 
 export default function ExperienceSection() {
   const [openId, setOpenId] = useState<string | null>(null);
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-120px" });
 
   const toggle = (id: string) => setOpenId((prev) => (prev === id ? null : id));
 
@@ -27,7 +27,8 @@ export default function ExperienceSection() {
         <motion.div
           variants={sectionVariants}
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.2 }}
           className="mb-16 text-center"
         >
           <p className="text-violet-400 text-sm font-semibold uppercase tracking-[0.2em] mb-3">Career</p>
@@ -48,9 +49,9 @@ export default function ExperienceSection() {
         {/* Timeline */}
         <div className="relative">
           {/* Vertical glow line */}
-          <div className="absolute left-6 top-0 bottom-0 w-px timeline-line" />
+          <div className="absolute left-2 md:left-6 top-0 bottom-0 w-px timeline-line" />
 
-          <div className="flex flex-col gap-6 pl-16">
+          <div className="flex flex-col gap-6 pl-8 md:pl-16">
             {cv.experience.map((exp, i) => {
               const isOpen = openId === exp.id;
               return (
@@ -58,11 +59,12 @@ export default function ExperienceSection() {
                   key={exp.id}
                   variants={sectionVariants}
                   initial="hidden"
-                  animate={inView ? "visible" : "hidden"}
+                  whileInView="visible"
+                  viewport={{ once: false, amount: 0.2 }}
                   transition={{ delay: i * 0.15 }}
                 >
                   {/* Timeline dot */}
-                  <div className="absolute left-[18px] w-3.5 h-3.5 rounded-full bg-violet-500 border-2 border-violet-300 shadow-[0_0_12px_rgba(139,92,246,0.8)]" />
+                  <div className="absolute left-[2px] md:left-[18px] w-3.5 h-3.5 rounded-full bg-violet-500 border-2 border-violet-300 shadow-[0_0_12px_rgba(139,92,246,0.8)]" />
 
                   {/* Card */}
                   <motion.div
@@ -75,7 +77,7 @@ export default function ExperienceSection() {
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none bg-gradient-to-br from-violet-500/5 to-transparent" />
 
                     {/* Header — always visible */}
-                    <div className="flex items-start justify-between gap-4 p-6 cursor-pointer select-none">
+                    <div className="flex items-start justify-between gap-4 p-5 md:p-6 cursor-pointer select-none">
                       <div className="flex-1 min-w-0">
                         <p className="text-xs font-semibold text-violet-400 uppercase tracking-widest mb-1">
                           {exp.startDate} – {exp.endDate}
@@ -107,7 +109,7 @@ export default function ExperienceSection() {
                           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                           className="overflow-hidden"
                         >
-                          <div className="px-6 pb-6 flex flex-col gap-4 border-t border-white/5">
+                          <div className="px-5 md:px-6 pb-5 md:pb-6 flex flex-col gap-4 border-t border-white/5">
                             {/* Project badge */}
                             <div className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-400/20 text-cyan-300 text-xs font-semibold w-fit">
                               <span className="w-1 h-1 rounded-full bg-cyan-400" />

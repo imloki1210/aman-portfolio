@@ -24,9 +24,10 @@ export default function ContactSection() {
       <div className="relative max-w-3xl mx-auto flex flex-col items-center gap-10">
         {/* Eyebrow */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.5, type: "spring", stiffness: 45 }}
           className="text-violet-400 text-sm font-semibold uppercase tracking-[0.2em]"
         >
           Get In Touch
@@ -34,9 +35,10 @@ export default function ContactSection() {
 
         {/* Big heading */}
         <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.7, delay: 0.1, type: "spring", stiffness: 45 }}
           className="text-6xl sm:text-7xl md:text-8xl font-bold tracking-tight leading-none"
           style={{
             backgroundImage: "linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.7) 100%)",
@@ -51,9 +53,10 @@ export default function ContactSection() {
 
         {/* Sub text */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.2, type: "spring", stiffness: 45 }}
           className="text-white/80 text-lg max-w-md leading-relaxed"
         >
           Have a project in mind or just want to say hello?
@@ -62,9 +65,10 @@ export default function ContactSection() {
 
         {/* Action buttons */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.3, type: "spring", stiffness: 45 }}
           className="flex flex-wrap items-center justify-center gap-4"
         >
           {/* Email */}

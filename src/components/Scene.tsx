@@ -4,52 +4,27 @@ import UnicornScene from "unicornstudio-react";
 
 export default function Scene() {
   return (
-    <div
-      style={{
-        position: "fixed",
-        inset: 0,
-        zIndex: 0,
-        width: "100%",
-        height: "100%",
-        overflow: "hidden", // Absolute cropping of everything out of bounds
-        backgroundColor: "#06060f"
-      }}
-    >
+    <div className="fixed inset-0 z-0 pointer-events-none bg-[#06060f]">
       {/* 
-        Ultra aggressive WebGL crop hack: 
-        Because UnicornStudio uses closed Shadow DOMs, we physically stretch the container 
-        far beyond the viewport's bottom. Since their watermark anchors "bottom: 20px" relative to 
-        this stretched wrapper, the watermark lands roughly 130px beneath the monitor's screen bounds!
+        Container stretched slightly to hide watermarks if needed,
+        but using object-fit to ensure the canvas covers mobile displays correctly.
       */}
-      <div 
-        style={{ 
-          position: "absolute",
-          top: "-150px", // Keeps background center vertically balanced
-          left: 0,
-          right: 0,
-          bottom: "-150px", // Pushes bottom boundary way down under the screen
-        }}
+      <div
+        className="absolute w-full h-[120vh] -top-[10vh]"
+        style={{ objectFit: "cover" }}
       >
         <UnicornScene
           projectId="Cxzw2weKLvu3uAoVVaNy"
           width="100%"
           height="100%"
           scale={1}
-          dpi={1.5}
+          dpi={2}
           sdkUrl="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@2.1.6/dist/unicornStudio.umd.js"
         />
       </div>
 
       {/* Dark overlay: dims canvas to boost text contrast */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: "rgba(0, 0, 0, 0.52)",
-          zIndex: 1,
-          pointerEvents: "none"
-        }}
-      />
+      <div className="absolute inset-0 bg-black/50 z-[1] pointer-events-none" />
     </div>
   );
 }

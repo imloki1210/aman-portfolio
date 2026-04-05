@@ -2,53 +2,30 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import cv from "@/data/cv.json";
+import { MonitorSmartphone, Terminal, Database } from "lucide-react";
 
-// Color palette pools for tags
-const colorSets = [
-  { bg: "bg-violet-500/15", border: "border-violet-400/25", text: "text-violet-200" },
-  { bg: "bg-cyan-500/15",   border: "border-cyan-400/25",   text: "text-cyan-200"   },
-  { bg: "bg-pink-500/15",   border: "border-pink-400/25",   text: "text-pink-200"   },
-  { bg: "bg-amber-500/15",  border: "border-amber-400/25",  text: "text-amber-200"  },
-  { bg: "bg-emerald-500/15",border: "border-emerald-400/25",text: "text-emerald-200"},
-  { bg: "bg-sky-500/15",    border: "border-sky-400/25",    text: "text-sky-200"    },
-];
-
-// Deterministic color from skill name
-function colorFor(name: string) {
-  let h = 0;
-  for (let i = 0; i < name.length; i++) h += name.charCodeAt(i);
-  return colorSets[h % colorSets.length];
-}
-
-// Floating animation with random-ish params seeded from index
-function floatVariant(i: number) {
-  const yAmp = 4 + (i % 4);
-  const dur = 2.8 + (i % 5) * 0.4;
-  const delay = (i % 7) * 0.3;
-  return {
-    animate: {
-      y: [0, -yAmp, 0],
-      transition: {
-        duration: dur,
-        repeat: Infinity,
-        ease: "easeInOut" as const,
-        delay,
-      },
-    },
-  };
-}
-
-const allSkills = [
-  ...cv.skills.languages,
-  ...cv.skills.librariesFrameworks,
-  ...cv.skills.technologiesTools,
-];
-
-const groups = [
-  { label: "Languages",               skills: cv.skills.languages           },
-  { label: "Libraries & Frameworks",  skills: cv.skills.librariesFrameworks  },
-  { label: "Technologies & Tools",    skills: cv.skills.technologiesTools    },
+const pillars = [
+  {
+    title: "Frontend & UI",
+    icon: <MonitorSmartphone className="w-6 h-6 text-violet-300" />,
+    skills: ["React.js", "Next.js", "JavaScript", "TypeScript", "Tailwind CSS"],
+    accent: "bg-violet-500/10 border-violet-400/20",
+    glow: "group-hover:shadow-[0_0_40px_-10px_rgba(139,92,246,0.3)]",
+  },
+  {
+    title: "Backend & AI",
+    icon: <Terminal className="w-6 h-6 text-cyan-300" />,
+    skills: ["Python", "FastAPI", "PostgreSQL", "Vector DBs (Pinecone/FAISS)", "LLM Orchestration"],
+    accent: "bg-cyan-500/10 border-cyan-400/20",
+    glow: "group-hover:shadow-[0_0_40px_-10px_rgba(34,211,238,0.3)]",
+  },
+  {
+    title: "Database & Tools",
+    icon: <Database className="w-6 h-6 text-emerald-300" />,
+    skills: ["Git", "GitHub", "Docker", "WebSockets", "Redis"],
+    accent: "bg-emerald-500/10 border-emerald-400/20",
+    glow: "group-hover:shadow-[0_0_40px_-10px_rgba(52,211,153,0.3)]",
+  },
 ];
 
 export default function SkillsSection() {
@@ -56,8 +33,8 @@ export default function SkillsSection() {
   const inView = useInView(ref, { once: true, margin: "-120px" });
 
   return (
-    <section id="skills" ref={ref} className="relative z-10 py-24 px-6">
-      <div className="max-w-4xl mx-auto">
+    <section id="skills" ref={ref} className="relative z-10 py-24 px-6 min-h-screen flex items-center">
+      <div className="max-w-6xl mx-auto w-full">
         {/* Section heading */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -65,60 +42,67 @@ export default function SkillsSection() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
           className="mb-16 text-center"
         >
-          <p className="text-violet-400 text-sm font-semibold uppercase tracking-[0.2em] mb-3">Tech Stack</p>
+          <p className="text-violet-400 text-sm font-semibold uppercase tracking-[0.2em] mb-3">Capabilities</p>
           <h2
             className="text-4xl sm:text-5xl font-bold tracking-tight"
             style={{
-              backgroundImage: "linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.5) 100%)",
+              backgroundImage: "linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.7) 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
             }}
           >
-            Skills
+            System Architecture
           </h2>
         </motion.div>
 
-        {/* Grouped floating tags */}
-        <div className="flex flex-col gap-12">
-          {groups.map((group, gi) => (
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.1 }}
+          variants={{
+            visible: { transition: { staggerChildren: 0.15 } },
+            hidden: {}
+          }}
+        >
+          {pillars.map((pillar, idx) => (
             <motion.div
-              key={group.label}
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: gi * 0.15, duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+              key={pillar.title}
+              variants={{
+                hidden: { opacity: 0, y: 50, scale: 0.95 },
+                visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.7, type: "spring", stiffness: 45 } }
+              }}
+              className={`group relative flex flex-col p-6 md:p-8 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md transition-all duration-500 ${pillar.glow} hover:bg-white/10 hover:-translate-y-2`}
             >
-              <p className="text-xs font-semibold text-white/30 uppercase tracking-[0.2em] mb-5 text-center">
-                {group.label}
-              </p>
-              <div className="flex flex-wrap justify-center gap-3">
-                {group.skills.map((skill, si) => {
-                  const globalIndex = allSkills.indexOf(skill);
-                  const clr = colorFor(skill);
-                  const float = floatVariant(globalIndex + si);
-                  return (
-                    <motion.span
-                      key={skill}
-                      variants={float}
-                      animate="animate"
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: si * 0.05 + gi * 0.1 }}
-                      whileHover={{
-                        scale: 1.1,
-                        boxShadow: "0 0 20px rgba(139,92,246,0.4)",
-                      }}
-                      className={`px-4 py-2 rounded-full border text-sm font-medium ${clr.bg} ${clr.border} ${clr.text}`}
-                    >
-                      {skill}
-                    </motion.span>
-                  );
-                })}
+              {/* Icon Container */}
+              <div className={`w-14 h-14 flex items-center justify-center rounded-2xl border mb-8 ${pillar.accent}`}>
+                {pillar.icon}
               </div>
+
+              {/* Title */}
+              <h3 className="text-2xl font-bold text-white mb-6">
+                {pillar.title}
+              </h3>
+
+              {/* Skills List */}
+              <ul className="flex flex-col gap-4 mt-auto">
+                {pillar.skills.map((skill, sIdx) => (
+                  <motion.li
+                    key={skill}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={inView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ delay: idx * 0.15 + (sIdx * 0.1) + 0.3 }}
+                    className="flex items-center gap-3 text-white/70"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-white/30 group-hover:bg-white/70 transition-colors duration-300" />
+                    <span className="font-medium tracking-wide">{skill}</span>
+                  </motion.li>
+                ))}
+              </ul>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
