@@ -122,7 +122,7 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
             <div className="w-full">
               <div className="p-8 rounded-3xl bg-black/40 border border-white/10 backdrop-blur-sm shadow-inner">
                 <p className="text-xl md:text-2xl font-semibold text-white/90 leading-relaxed italic">
-                  "{project.advanced_metrics}"
+                  &quot;{project.advanced_metrics}&quot;
                 </p>
               </div>
             </div>

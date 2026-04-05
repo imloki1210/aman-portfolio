@@ -20,7 +20,7 @@ function AnimatedTitle() {
     let timeout: ReturnType<typeof setTimeout>;
 
     if (!deleting && displayed.length < current.length) {
-      timeout = setTimeout(() => setDisplayed(current.slice(0, displayed.length + 1)), 60);
+      timeout = setTimeout(() => setDisplayed(current.slice(0, displayed.length + 1)), 50);
     } else if (!deleting && displayed.length === current.length) {
       timeout = setTimeout(() => setDeleting(true), 2500);
     } else if (deleting && displayed.length > 0) {
@@ -36,7 +36,7 @@ function AnimatedTitle() {
   return (
     <span className="font-mono text-violet-300 font-semibold inline-flex items-center tracking-tight">
       {displayed}
-      <span className="inline-block w-[0.4em] h-[1.1em] ml-[2px] bg-violet-400 animate-pulse opacity-80" />
+      <span className="inline-block w-[0.4em] h-[1.1em] ml-[2px] bg-violet-400 animate-blink opacity-80" />
     </span>
   );
 }

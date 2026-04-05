@@ -1,8 +1,20 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import UnicornScene from "unicornstudio-react";
 
 export default function Scene() {
+  const [dpi, setDpi] = useState(2);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setDpi(window.innerWidth < 768 ? 1 : 2);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <div className="fixed inset-0 z-0 pointer-events-none bg-[#06060f]">
       {/* 
@@ -18,7 +30,7 @@ export default function Scene() {
           width="100%"
           height="100%"
           scale={1}
-          dpi={2}
+          dpi={dpi}
           sdkUrl="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@2.1.6/dist/unicornStudio.umd.js"
         />
       </div>

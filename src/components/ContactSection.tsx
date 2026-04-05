@@ -1,12 +1,11 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import cv from "@/data/cv.json";
 
 export default function ContactSection() {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
 
   const { personal } = cv;
 

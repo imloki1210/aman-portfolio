@@ -1,7 +1,6 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import projects from "@/data/projects.json";
 
@@ -42,7 +41,7 @@ export default function FeaturedProjects() {
             hidden: {}
           }}
         >
-          {projects.map((project, idx) => (
+          {projects.map((project) => (
             <Link key={project.id} href={`/project/${project.slug}`}>
               <motion.div
                 layoutId={`project-card-${project.slug}`}
@@ -50,7 +49,8 @@ export default function FeaturedProjects() {
                   hidden: { opacity: 0, y: 50, scale: 0.95 },
                   visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.7, type: "spring", stiffness: 45 } }
                 }}
-                className="group relative flex flex-col h-full p-6 md:p-8 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md transition-all duration-500 hover:bg-white/10 hover:-translate-y-2 hover:shadow-[0_0_40px_-10px_rgba(139,92,246,0.25)] active:scale-95"
+                className="group relative flex flex-col h-full p-6 md:p-8 rounded-3xl border border-white/10 bg-black/80 md:bg-white/5 md:backdrop-blur-md transition-all duration-500 hover:bg-white/10 hover:shadow-[0_0_40px_-10px_rgba(139,92,246,0.25)] active:scale-95"
+                whileHover={{ y: -10, scale: 1.02, borderColor: "rgba(139,92,246,0.4)" }}
               >
                 {/* Header */}
                 <h3 className="text-2xl font-bold text-white mb-3 tracking-tight group-hover:text-violet-300 transition-colors duration-300">

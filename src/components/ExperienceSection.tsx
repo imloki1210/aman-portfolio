@@ -1,10 +1,10 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import cv from "@/data/cv.json";
 
-const sectionVariants: any = {
+const sectionVariants: Variants = {
   hidden: { opacity: 0, y: 50, scale: 0.95 },
   visible: {
     opacity: 1,
@@ -69,8 +69,8 @@ export default function ExperienceSection() {
                   {/* Card */}
                   <motion.div
                     onClick={() => toggle(exp.id)}
-                    className="group relative rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl overflow-hidden"
-                    whileHover={isOpen ? {} : { borderColor: "rgba(139,92,246,0.4)" }}
+                    className="group relative rounded-2xl border border-white/10 bg-black/80 md:bg-white/5 md:backdrop-blur-xl overflow-hidden"
+                    whileHover={isOpen ? {} : { y: -10, scale: 1.02, borderColor: "rgba(139,92,246,0.4)" }}
                     transition={{ duration: 0.2 }}
                   >
                     {/* Hover glow overlay */}
